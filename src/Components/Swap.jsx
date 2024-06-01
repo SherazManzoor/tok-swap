@@ -89,16 +89,16 @@ const Swap = () => {
               </div>
             </div>
           </div>
-          <div className="row justify-content-center pt-5">
+          <div className="row justify-content-center pt-5 partner-images">
             <div className="col-12 col-lg-5 col-md-7">
               <div className="row">
                 <div className="col-6">
-                  <a href="https://corgistudio.io/" target='_blank'>
+                  <a href="https://corgistudio.io/" rel="noreferrer" target='_blank'>
                     <img src="/images/swap-banner.png" alt="Swap Banner" className='img-fluid' />
                   </a>
                 </div>
                 <div className="col-6">
-                  <a href="https://wolfswap.app/" target='_blank'>
+                  <a href="https://wolfswap.app/" rel="noreferrer" target='_blank'>
                     <img src="/images/swap-banner-2.png" alt="Swap Banner" className='img-fluid' />
                   </a>
                 </div>

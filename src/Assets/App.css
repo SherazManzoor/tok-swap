@@ -327,6 +327,19 @@ body {
   backface-visibility: hidden;
 }
 
+.partner-images .img-fluid {
+  display: block;
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .partner-images .img-fluid {
+    max-width: 80%;
+  }
+}
+
 /*======================================
   Home Page Style End
 ======================================*/
