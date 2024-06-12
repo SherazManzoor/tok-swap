@@ -400,25 +400,31 @@ const Swap = () => {
         await provider.send("eth_requestAccounts", []);
         const network = await provider.getNetwork();
 
-        if (network.chainId !== parseInt(cronosChainId, 16)) {
-          try {
-            await provider.send("wallet_switchEthereumChain", [{ chainId: cronosChainId }]);
-          } catch (error) {
-            if (error.code === 4902) {
-              await provider.send("wallet_addEthereumChain", [
-                {
-                  chainId: cronosChainId,
-                  rpcUrls: [cronosRpcUrl],
-                  chainName: "Cronos Mainnet",
-                  nativeCurrency: { name: "Cronos", symbol: "CRO", decimals: 18 },
-                  blockExplorerUrls: ["https://cronoscan.com/"],
-                },
-              ]);
-              setisWalletConnected(true);
-            } else {
-              throw error;
+        console.log(provider);
+
+        try {
+          if (network.chainId !== parseInt(cronosChainId, 16)) {
+            try {
+              await provider.send("wallet_switchEthereumChain", [{ chainId: cronosChainId }]);
+            } catch (error) {
+              if (error.code === 4902) {
+                await provider.send("wallet_addEthereumChain", [
+                  {
+                    chainId: cronosChainId,
+                    rpcUrls: [cronosRpcUrl],
+                    chainName: "Cronos Mainnet",
+                    nativeCurrency: { name: "Cronos", symbol: "CRO", decimals: 18 },
+                    blockExplorerUrls: ["https://cronoscan.com/"],
+                  },
+                ]);
+                setisWalletConnected(true);
+              } else {
+                throw error;
+              }
             }
           }
+        } catch (error) {
+          console.log(error);
         }
         setisWalletConnected(true);
 
@@ -588,7 +594,7 @@ const Swap = () => {
                             if (e.target.value == "") {
                               setReceiveAmount("0");
                             } else {
-                              setReceiveAmount("50");
+                              setReceiveAmount("150");
                             }
                           }}
                         />
@@ -653,7 +659,7 @@ const Swap = () => {
                           placeholder="0"
                           inputmode="numeric"
                           className="form-control"
-                          value={50}
+                          value={150}
                           // onChange={(e) => {
                           //   setswapTokenForNft_Amount(e.target.value);
                           // }}
