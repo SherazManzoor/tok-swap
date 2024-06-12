@@ -401,30 +401,30 @@ const Swap = () => {
         const network = await provider.getNetwork();
 
         // console.log(window.ethereum);
-        try {
-          if (network.chainId !== parseInt(cronosChainId, 16) && window.ethereum.isMetaMask) {
-            try {
-              await provider.send("wallet_switchEthereumChain", [{ chainId: cronosChainId }]);
-            } catch (error) {
-              if (error.code === 4902) {
-                await provider.send("wallet_addEthereumChain", [
-                  {
-                    chainId: cronosChainId,
-                    rpcUrls: [cronosRpcUrl],
-                    chainName: "Cronos Mainnet",
-                    nativeCurrency: { name: "Cronos", symbol: "CRO", decimals: 18 },
-                    blockExplorerUrls: ["https://cronoscan.com/"],
-                  },
-                ]);
-                setisWalletConnected(true);
-              } else {
-                throw error;
-              }
-            }
-          }
-        } catch (error) {
-          console.log(error);
-        }
+        // try {
+        //   if (network.chainId !== parseInt(cronosChainId, 16) && window.ethereum.isMetaMask) {
+        //     try {
+        //       await provider.send("wallet_switchEthereumChain", [{ chainId: cronosChainId }]);
+        //     } catch (error) {
+        //       if (error.code === 4902) {
+        //         await provider.send("wallet_addEthereumChain", [
+        //           {
+        //             chainId: cronosChainId,
+        //             rpcUrls: [cronosRpcUrl],
+        //             chainName: "Cronos Mainnet",
+        //             nativeCurrency: { name: "Cronos", symbol: "CRO", decimals: 18 },
+        //             blockExplorerUrls: ["https://cronoscan.com/"],
+        //           },
+        //         ]);
+        //         setisWalletConnected(true);
+        //       } else {
+        //         throw error;
+        //       }
+        //     }
+        //   }
+        // } catch (error) {
+        //   console.log(error);
+        // }
         setisWalletConnected(true);
 
         const signer = await provider.getSigner();
