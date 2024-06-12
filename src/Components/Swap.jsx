@@ -398,7 +398,7 @@ const Swap = () => {
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
         await provider.send("eth_requestAccounts", []);
-        const network = await provider.getNetwork();
+        //const network = await provider.getNetwork();
 
         // console.log(window.ethereum);
         // try {
@@ -509,6 +509,10 @@ const Swap = () => {
 
   const swapNFTForCoins = async () => {
     if (isSwapTokenForNft) return;
+    if (swapNftId == "") {
+      alert("Enter Id");
+      return;
+    }
     await connectWallet();
     if (true) {
       try {
