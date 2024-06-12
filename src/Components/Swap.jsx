@@ -400,10 +400,9 @@ const Swap = () => {
         await provider.send("eth_requestAccounts", []);
         const network = await provider.getNetwork();
 
-        console.log(provider);
-
+        // console.log(window.ethereum);
         try {
-          if (network.chainId !== parseInt(cronosChainId, 16)) {
+          if (network.chainId !== parseInt(cronosChainId, 16) && window.ethereum.isMetaMask) {
             try {
               await provider.send("wallet_switchEthereumChain", [{ chainId: cronosChainId }]);
             } catch (error) {
